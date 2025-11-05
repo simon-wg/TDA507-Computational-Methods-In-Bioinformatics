@@ -101,8 +101,7 @@ int main() {
     printf("\n");
   }
   printf("\n");
-  int i_max, j_max;
-  int max = 0;
+  int i_max = 0, j_max = 0, max = 0;
   for (int i = m; i >= 0; --i) {
     for (int j = n; j >= 0; --j) {
       if (F[i][j] > max) {
@@ -148,7 +147,7 @@ int main() {
   }
   printf("\n");
   // Pipes between exact matches
-  int exactMatches;
+  int exactMatches = 0;
   for (i = alignmentLength - 1; i >= 0; i--) {
     if (alignX[i] == alignY[i]) {
       ++exactMatches;

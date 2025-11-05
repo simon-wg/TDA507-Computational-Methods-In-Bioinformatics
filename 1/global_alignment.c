@@ -57,7 +57,7 @@ void printMatch(int len) {
   printf("Percent identity: %.2f%%\n",
          100 * (double)exactMatches / (double)len);
   printf("Hamming distance: %d\n", len - exactMatches);
-  for (int i; i < 40; ++i)
+  for (int i = 0; i < 40; ++i)
     printf("-");
   printf("\n");
 }

@@ -1,13 +1,19 @@
-all: global local levenshtein
+CC = cc
+CFLAGS = -Wall -Wextra -O2
+TARGETS = global local levenshtein
+
+.PHONY: all clean
+
+all: $(TARGETS)
 
 global: global_alignment.c
-	cc global_alignment.c -o global
+	$(CC) $(CFLAGS) $< -o $@
 
 local: local_alignment.c
-	cc local_alignment.c -o local
+	$(CC) $(CFLAGS) $< -o $@
 
 levenshtein: levenshtein.c
-	cc levenshtein.c -o levenshtein
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm levenshtein local global
+	rm -f $(TARGETS)

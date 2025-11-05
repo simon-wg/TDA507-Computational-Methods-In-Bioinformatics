@@ -22,13 +22,9 @@
 int main() {
   int i, j;
   int m, n;
-  int alignmentLength, score, tmp;
   char X[MAX_LENGTH + 1] = "ATCGAT";
   char Y[MAX_LENGTH + 1] = "ATACGT";
-  int F[MAX_LENGTH + 1][MAX_LENGTH + 1];     /* score matrix */
-  int trace[MAX_LENGTH + 1][MAX_LENGTH + 1]; /* trace matrix */
-  char alignX[MAX_LENGTH * 2];               /* aligned X sequence */
-  char alignY[MAX_LENGTH * 2];               /* aligned Y sequence */
+  int F[MAX_LENGTH + 1][MAX_LENGTH + 1]; /* score matrix */
   /*
    * Find lengths of (null-terminated) strings X and Y
    */
@@ -45,7 +41,6 @@ int main() {
    */
   // Note for self:
   // F[row][col]
-  trace[0][0] = STOP;
   for (i = 0; i <= m; i++) {
     for (j = 0; j <= n; j++) {
       F[i][j] = 0;
