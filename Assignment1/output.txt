@@ -1,0 +1,85 @@
+Output from running local_alignment.c: 
+Score matrix:
+          H    D    A    G    A    W    G    H    E    Q
+     0    0    0    0    0    0    0    0    0    0    0
+P    0    0    0    0    0    0    0    0    0    0    0
+A    0    0    0    2    0    2    0    0    0    0    0
+W    0    0    0    0    1    0    4    2    0    0    0
+H    0    2    0    0    0    0    2    3    4    2    0
+E    0    0    1    0    0    0    0    1    2    6    4
+A    0    0    0    3    1    2    0    0    0    4    5
+E    0    0    0    1    2    0    1    0    0    2    3
+----------------------------------------
+AW-HE
+|| ||
+AWGHE
+----------------------------------------
+Percent identity: 80.00%
+Hamming distance: 1
+
+Output from levenshtein.c:
+Score matrix:
+          A    T    A    C    G    T
+     0    1    2    3    4    5    6
+A    1    0    1    2    3    3    4
+T    2    1    1    2    2    3    4
+C    3    2    1    2    3    3    4
+G    4    3    2    1    2    3    4
+A    5    3    3    2    2    2    3
+T    6    4    4    3    3    3    2
+----------------------------------------
+Levenshtein distance: 2
+
+Output from global_alignment.c: 
+Score matrix:
+          A    T    T    T    T    A
+     0   -2   -4   -6   -8  -10  -12
+A   -2    2    0   -2   -4   -6   -8
+T   -4    0    4    2    0   -2   -4
+T   -6   -2    2    6    4    2    0
+A   -8   -4    0    4    5    3    4
+----------------------------------------
+Alignment 1:
+A--TTA
+|  |||
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Alignment 2:
+A-T-TA
+| | ||
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Alignment 3:
+AT--TA
+||  ||
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Alignment 4:
+A-TT-A
+| || |
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Alignment 5:
+AT-T-A
+|| | |
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Alignment 6:
+ATT--A
+|||  |
+ATTTTA
+Percent identity: 66.67%
+Hamming distance: 2
+----------------------------------------
+Total number of optimal alignments: 6
+

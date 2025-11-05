@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 all: 
-	$(MAKE) -C 1 all
+	$(MAKE) -C Assignment1 all
 
 clean: 
-	$(MAKE) -C 1 clean
+	$(MAKE) -C Assignment1 clean
