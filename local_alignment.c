@@ -11,11 +11,9 @@
 #include <stdio.h>
 
 #define MAX_LENGTH 100
-
 #define MATCH_SCORE 2
 #define MISMATCH_SCORE -1
 #define GAP_PENALTY 2
-
 #define STOP 0
 #define UP 1
 #define LEFT 2
@@ -27,12 +25,10 @@ int main() {
   int alignmentLength, score, tmp;
   char X[MAX_LENGTH + 1] = "PAWHEAE";
   char Y[MAX_LENGTH + 1] = "HDAGAWGHEQ";
-
   int F[MAX_LENGTH + 1][MAX_LENGTH + 1];     /* score matrix */
   int trace[MAX_LENGTH + 1][MAX_LENGTH + 1]; /* trace matrix */
   char alignX[MAX_LENGTH * 2];               /* aligned X sequence */
   char alignY[MAX_LENGTH * 2];               /* aligned Y sequence */
-
   /*
    * Find lengths of (null-terminated) strings X and Y
    */
@@ -44,11 +40,9 @@ int main() {
   while (Y[n] != 0) {
     n++;
   }
-
   /*
    * Initialise matrices
    */
-
   F[0][0] = 0;
   trace[0][0] = STOP;
   for (i = 1; i <= m; i++) {
@@ -59,13 +53,10 @@ int main() {
     F[0][j] = 0;
     trace[0][j] = STOP;
   }
-
   /*
    * Fill matrices
    */
-
   for (i = 1; i <= m; i++) {
-
     for (j = 1; j <= n; j++) {
       if (X[i - 1] == Y[j - 1]) {
         score = F[i - 1][j - 1] + MATCH_SCORE;
@@ -73,32 +64,26 @@ int main() {
         score = F[i - 1][j - 1] + MISMATCH_SCORE;
       }
       trace[i][j] = DIAG;
-
       tmp = F[i - 1][j] - GAP_PENALTY;
       if (tmp > score) {
         score = tmp;
         trace[i][j] = UP;
       }
-
       tmp = F[i][j - 1] - GAP_PENALTY;
       if (tmp > score) {
         score = tmp;
         trace[i][j] = LEFT;
       }
-
       if (0 > score) {
         score = 0;
         trace[i][j] = STOP;
       }
-
       F[i][j] = score;
     }
   }
-
   /*
    * Print score matrix
    */
-
   printf("Score matrix:\n      ");
   for (j = 0; j < n; ++j) {
     printf("%5c", Y[j]);
@@ -116,7 +101,6 @@ int main() {
     printf("\n");
   }
   printf("\n");
-
   int i_max, j_max;
   int max = 0;
   for (int i = m; i >= 0; --i) {
@@ -128,19 +112,14 @@ int main() {
       }
     }
   }
-
   /*
    * Trace back from the first found max value
    */
-
   i = i_max;
   j = j_max;
   alignmentLength = 0;
-
   while (trace[i][j] != STOP) {
-
     switch (trace[i][j]) {
-
     case DIAG:
       alignX[alignmentLength] = X[i - 1];
       alignY[alignmentLength] = Y[j - 1];
@@ -148,14 +127,12 @@ int main() {
       j--;
       alignmentLength++;
       break;
-
     case LEFT:
       alignX[alignmentLength] = '-';
       alignY[alignmentLength] = Y[j - 1];
       j--;
       alignmentLength++;
       break;
-
     case UP:
       alignX[alignmentLength] = X[i - 1];
       alignY[alignmentLength] = '-';
@@ -163,11 +140,9 @@ int main() {
       alignmentLength++;
     }
   }
-
   /*
    * Print alignment
    */
-
   for (i = alignmentLength - 1; i >= 0; i--) {
     printf("%c", alignX[i]);
   }
@@ -190,6 +165,5 @@ int main() {
   printf("Percent identity: %.2f%%\n",
          100 * (double)exactMatches / (double)alignmentLength);
   printf("Hamming distance: %d\n", alignmentLength - exactMatches);
-
   return (1);
 }

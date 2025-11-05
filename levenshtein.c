@@ -11,11 +11,9 @@
 #include <stdio.h>
 
 #define MAX_LENGTH 100
-
 #define MATCH_SCORE 2
 #define MISMATCH_SCORE -1
 #define GAP_PENALTY 2
-
 #define STOP 0
 #define UP 1
 #define LEFT 2
@@ -27,12 +25,10 @@ int main() {
   int alignmentLength, score, tmp;
   char X[MAX_LENGTH + 1] = "ATCGAT";
   char Y[MAX_LENGTH + 1] = "ATACGT";
-
   int F[MAX_LENGTH + 1][MAX_LENGTH + 1];     /* score matrix */
   int trace[MAX_LENGTH + 1][MAX_LENGTH + 1]; /* trace matrix */
   char alignX[MAX_LENGTH * 2];               /* aligned X sequence */
   char alignY[MAX_LENGTH * 2];               /* aligned Y sequence */
-
   /*
    * Find lengths of (null-terminated) strings X and Y
    */
@@ -44,13 +40,11 @@ int main() {
   while (Y[n] != 0) {
     n++;
   }
-
   /*
    * Initialise matrices
    */
   // Note for self:
   // F[row][col]
-
   trace[0][0] = STOP;
   for (i = 0; i <= m; i++) {
     for (j = 0; j <= n; j++) {
@@ -63,11 +57,9 @@ int main() {
   for (j = 0; j <= n; j++) {
     F[0][j] = j;
   }
-
   /*
    * Fill matrix
    */
-
   for (i = 1; i <= m; i++) {
     for (j = 1; j <= n; j++) {
       int substitutionCost;
@@ -80,11 +72,9 @@ int main() {
       F[i][j] = minimumNearby + substitutionCost;
     }
   }
-
   /*
    * Print score matrix
    */
-
   printf("Score matrix:\n      ");
   for (j = 0; j < n; ++j) {
     printf("%5c", Y[j]);
@@ -102,8 +92,6 @@ int main() {
     printf("\n");
   }
   printf("\n");
-
   printf("Levenshtein distance: %d\n", F[m][n]);
-
   return (1);
 }
