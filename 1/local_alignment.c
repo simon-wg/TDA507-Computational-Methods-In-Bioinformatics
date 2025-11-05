@@ -20,6 +20,7 @@
 #define DIAG 3
 
 int main() {
+  printf("Output from running local_alignment.c: \n");
   int i, j;
   int m, n;
   int alignmentLength, score, tmp;
@@ -100,6 +101,8 @@ int main() {
     }
     printf("\n");
   }
+  for (int i = 0; i < 40; ++i)
+    printf("-");
   printf("\n");
   int i_max = 0, j_max = 0, max = 0;
   for (int i = m; i >= 0; --i) {
@@ -159,10 +162,13 @@ int main() {
   for (i = alignmentLength - 1; i >= 0; i--) {
     printf("%c", alignY[i]);
   }
-  printf("\n\n");
+  printf("\n");
+  for (int i = 0; i < 40; ++i)
+    printf("-");
+  printf("\n");
   // Calculate the percent identity by exact matches / alignment length
   printf("Percent identity: %.2f%%\n",
          100 * (double)exactMatches / (double)alignmentLength);
-  printf("Hamming distance: %d\n", alignmentLength - exactMatches);
+  printf("Hamming distance: %d\n\n", alignmentLength - exactMatches);
   return (1);
 }

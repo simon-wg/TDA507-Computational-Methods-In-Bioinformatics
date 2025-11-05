@@ -116,6 +116,7 @@ int main() {
   /*
    * Find lengths of (null-terminated) strings X and Y
    */
+  printf("Output from global_alignment.c: \n");
   m = 0;
   n = 0;
   while (X[m] != 0) {
@@ -191,8 +192,10 @@ int main() {
     }
     printf("\n");
   }
+  for (int i = 0; i < 40; ++i)
+    printf("-");
   printf("\n");
   traceback(m, n, 0);
-  printf("Total number of optimal alignments: %d\n", alignmentCount);
+  printf("Total number of optimal alignments: %d\n\n", alignmentCount);
   return (1);
 }

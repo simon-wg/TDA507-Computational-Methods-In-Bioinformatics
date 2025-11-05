@@ -20,6 +20,7 @@
 #define DIAG 3
 
 int main() {
+  printf("Output from levenshtein.c:\n");
   int i, j;
   int m, n;
   char X[MAX_LENGTH + 1] = "ATCGAT";
@@ -86,7 +87,9 @@ int main() {
     }
     printf("\n");
   }
+  for (int i = 0; i < 40; ++i)
+    printf("-");
   printf("\n");
-  printf("Levenshtein distance: %d\n", F[m][n]);
+  printf("Levenshtein distance: %d\n\n", F[m][n]);
   return (1);
 }
