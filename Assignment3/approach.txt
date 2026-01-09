@@ -1,0 +1,14 @@
+For this project I tried a somewhat more object oriented approach, creating a class for the protein model in order to have an easier time working with them.
+
+I began with implementing a way to read .pdb files into the ProteinModel class, reading ATOM lines into the datastructure and appending finished models to an array when finding the ENDMDL keyword.
+One assumption I make is that each model consists of the same amount of Ca atoms, otherwise it will probably fail in weird ways.
+
+After this I created the function to calculate score matrix. I have some memoization for each model's internal distance matrix. I used some help from LLMs with vectorizing the operations to use numpy instead of nativ python.
+
+After calculating the score matrix I was basically done with Q1. I added some features like reading file based on input, and printed the smallest and largest distances along with which models that was between.
+
+For Q2 I took the score matrix, flattened it and performed hierarchical clustering using linkage on the variance matrix. Finally plotting the dendrogram from the linkage matrix.
+
+Finally for Q3 I assume the reason that we get a bad result is that the SSE values are to large, causing issues with the linkage matrix and therefore the dendrogram displaying the clustering.
+The obvious solution is to use RMSD, since SSE overrepresents larger outliers, causing them to have an excessive effect on the clustering, while RMSD more accurately represents the actual structure. The next best solution from what I have found seems to be to use wards method for the linkage clustering.
+I implemented all of the above, along with the option to use MSE instead of SSE. MSE is linearly proportional to SSE though so it doesn't actually make a difference in the clustering or linkage, the main difference is that the MSE option uses wards method for linkage.

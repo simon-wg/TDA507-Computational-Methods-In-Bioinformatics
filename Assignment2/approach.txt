@@ -1,0 +1,16 @@
+By Simon Westlin Green
+
+My approach for this problem was to start easy, so the first step was to just brute force all combinations of paths where the steps between atoms was 3.8Å.
+I started by reading the data and then just iterated through all possible combinations of points, and found the longest which had correct distances.
+This worked fine for q1, and produced the expected output for at least test_q1.txt.
+When trying it on q2 it expectedly failed due to the large data size.
+
+Then I changed my approach to a more standard approach of a dfs, with early pruning based on nodes remaining.
+I constructed an adjacency list/matrix representing all vertices in a graph and their respective edges.
+I then traversed the graph in order to find the longest path.
+Depending on Margin this worked fine. With values <= 0.2 it was relatively fast.
+The chain produced by doing this on data_q2.txt was not in the expected length range though, so I looked at the angles between triads of atoms from test_q1.txt, and did some googling to find a range of angles which gave the expected length.
+
+I also did some dynamic programming like caching the results of angle calculations, which gave some speedup.
+
+My assumptions about the data is that the files all follow the same format of being atom index, x, y and z coordinates separated by whitespaces, and that there is no invalid data in the files, like strings.

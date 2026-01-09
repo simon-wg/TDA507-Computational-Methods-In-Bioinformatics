@@ -1,7 +1,7 @@
 {
   description = "A Nix-flake-based C/C++ development environment";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/release-25.05";
 
   outputs =
     { self, ... }@inputs:
@@ -46,6 +46,20 @@
                     lcov
                     vcpkg
                     vcpkg-tool
+
+                    micromamba
+
+                    (python312.withPackages (
+                      python-pkgs: with python-pkgs; [
+                        tqdm
+                        matplotlib
+                        numpy
+                        scipy
+                        pip
+                        notebook
+                        jupyter
+                      ]
+                    ))
                   ]
                   ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
               };

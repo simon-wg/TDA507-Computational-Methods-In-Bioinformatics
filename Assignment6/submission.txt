@@ -1,0 +1,22 @@
+1.1 Dynamic Programming
+Dynamic programming is used in several situations during the course. We of course use DP for the Smith-Waterman algorithm used in Assignment 1 when finding local alignmnents. I also used DP in order to speed up some calculations for assignment 2 by memoizing angles between atom triples. In general DP is good for bioinformatics since it involves repeated difficult calculations.
+One usecase outside of bioinformatics for dynamic programming is navigation using GPS, where djikstras algorithm uses memoization to find the shortest path to a destination.
+
+1.2 Distance Metrics
+Another method we used for several assignments was distance metrics. In Assignment 1 we used the levenshtein distance between sequences, whereas in Assignment 2 we compared distances between C(alpha) atoms and created an adjancency graph from it, similar to in Assignment 3.
+There are several examples of distance metrics being used outside of bioinformatics. For example spam filters where emails are vectorized before being compared to each others in some high dimensional space. If two mails are similiar in this space then they are likely related in some way. We can cluster emails which are known to be spam, and then use these clusters to find new spam mails.
+
+2 Nobel lecture
+The 2024 Nobel Lectures by Baker, Hassabis, and Jumper directly mirror the progression of this course, transitioning from foundational biophysics to the AI-driven era.
+Prof. Baker’s distinction between traditional and de novo engineering aligns with our course modules. We began with sequence alignment and main-chain modeling before advancing to the modern deep learning approaches. This reflects the field's transition into being more focused on the inverse folding problem, and the interest in finding sequences which can fullfil a desired purpose but which don't naturally exist in the world.
+The talk by Sir Demis Hassabis about AlphaGo's search strategies is reminiscent of our use of dynamic programming in the assignments. While we used deterministic methods of sequence alignment, Hassabis highlights how deep learning can bring this methodology into high dimensional spaces, achieving a much higher level of accuracy than traditional predictions could ever reach, and much faster computation at the same time.
+Finally the lecture from Dr. John Jumper regarding FAPE provides more context for our work using residue distance matrices in assignment 5.
+This along with  the discussion on side chains and how they could be used to further improve models reflected what I found when researching other methods of optimizing the deterministic solution for assignment 2.
+In general the FAPE loss model mirrors all improvements we've seen in the course, from using global metrics like distance between atoms to using internal coordinates and relative locations between atoms, in order to make it agnostic to which way the structure is oriented.
+
+3 ARP/wARP cis peptides
+The reason working with cis-peptides would add complications seems to be due to their extreme rarity. While there exists a good amount of trans-peptides, which they could use to identify other trans-peptides by frequency analysis, it seems that adding cis-peptides into the equation might make the accuracy of the much more numerous trans-peptides lower. 
+
+4 Similarity in topology
+I am having a bit of a hard time reading the contact map, but I'm assuming the similarity the authors are talking about is the "wings" around (20, 20) and (60, 60).
+Since the lower left part is the simulated structure and the upper right part is the real structure we would expect that for each (x, y) there would be similarities in (y, x) more often than not. I could maybe see hints of them but I personally think the "clear" similarity is not all too clear.
